@@ -1,4 +1,4 @@
-#**Behavioral Cloning** 
+# **Behavioral Cloning** 
 
 
 **Behavioral Cloning Project**
@@ -19,9 +19,9 @@ The goals / steps of this project are the following:
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Files Submitted & Code Quality
+### Files Submitted & Code Quality
 
-####1. Submission includes all required files and can be used to run the simulator in autonomous mode
+#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -29,43 +29,43 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results
 
-####2. Submission includes functional code
+#### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 The model in model.py uses Keras 2 and may not run with the Udacity-provided Docker image.
 
-####3. Submission code is usable and readable
+#### 3. Submission code is usable and readable
 
 I have, for the most part, re-used code from the classes and added comments where required.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. An appropriate model architecture has been employed
+#### 1. An appropriate model architecture has been employed
 
 The model is based on the model Nvidia model referenced in the class. It consits of several convolutional layers followed by several dense layers. The model includes relu-activations to add non-linearity as well
 as lambda and cropping layers for normalizing and preprocessing the images on the GPU. 
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 The model contains dropout layers. The validation set is approx. a third of the sample data. Approximately 27k steering angles with three pictures each were recorded. Difficult parts of the map as well as recovery parts were recorded several times. 
 The number of epochs was limited to 10 as the validation loss stayed more or less constant while training loss kept decreasing with more epochs.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually. The correction paramter was tuned by trying various values and recording validation accuracy, a value of 0.1 seems to work well.
 Different values for batch size were used, but the results did not differ dramatically.
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 Data recording included several laps of center lane driving (clock and counter-clockwise) as well as recovery driving and recording problematic areas (e.g. bridge) several times. The dataset contains 27k samples.
 The second map was also recorded, but not as extensively.
 
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 Initially I started out with a simple model and small dataset to test the implementation. I then implemented the conv-net mentioned in class. I tested the model with the simulator and found some problematic areas (such as bridge and dirt road in first map) and so recorded more training data for those sections of the map.
 Data was split into validation and train sets and shuffled.
@@ -74,7 +74,7 @@ Validation loss decreased mostly during the first few epochs, so training for mo
 I tested the simulator with different speeds, the final model was robust to changes in the speed setting for the first map but not for the second.
 
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture consisted of a convolution neural network with the following layers and layer sizes:
 -Lambda layer for normalization of input
@@ -86,7 +86,7 @@ The final model architecture consisted of a convolution neural network with the 
 -output layer (dense, 1 neuron) for the predicted steering angle
 
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 On the first map two center lane driving laps were combined with recovery laps (recording only when correcting back towards center) as well as additional recording of curves and tricky parts of the map to avoid an imbalanced
 training set. Speed during training on the first map was 30mp/h. Several laps from the second map were also added, but at much lower speed.
