@@ -13,13 +13,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image0]: ./examples/center_sample.png "Sample image"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -98,7 +92,7 @@ On the first map two center lane driving laps were combined with recovery laps (
 training set. Speed during training on the first map was 30mp/h. Several laps from the second map were also added, but at much lower speed.
 
 Here is an example input picture (center camera):
-![alt text][image2]
+![alt text][image0]
 
 All three pictures were used and flipped to augment the dataset. 
 
@@ -109,3 +103,7 @@ The data was shuffled and 30% used as validation set.
 Training involved an iterative approach of training the model, tuning paramters to improve validation accuracy, testing the simulator and recording additional training data for problematic areas. 
 The model was trained for 10 epochs as validation accuracy did not improve very much after that and the model began to overfit. Learning rate was adapted by the Adam optimizer. The correction factor for 
 the off-center images was tested with several values around the starting value proposed in class.
+
+The model works well for the first map, but not yet for the second.
+[video](https://github.com/janreerink/CarND-Behavioral-Cloning-P3/blob/master/examples/run1.mp4)
+
